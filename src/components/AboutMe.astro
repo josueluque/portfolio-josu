@@ -1,0 +1,14 @@
+---
+import type { Lang } from "@/i18n/types"
+import { profile } from "@/data/profile"
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+---
+
+<article class="max-w-3xl mx-auto text-lg text-gray-700 dark:text-gray-300 text-pretty">
+  <p>{profile.aboutText[lang]}</p>
+</article>

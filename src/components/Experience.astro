@@ -1,0 +1,27 @@
+---
+import ExperienceItem from "@/components/ExperienceItem.astro"
+import type { Lang } from "@/i18n/types"
+import { experience } from "@/data/experience"
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+---
+
+<ol class="relative">
+  {
+    experience.map((item) => (
+      <li>
+        <ExperienceItem
+          title={item.title[lang]}
+          company={item.company}
+          date={item.date[lang]}
+          description={item.description[lang]}
+          current={item.current}
+        />
+      </li>
+    ))
+  }
+</ol>

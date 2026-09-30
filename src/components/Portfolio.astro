@@ -1,0 +1,62 @@
+---
+import AboutMe from "@/components/AboutMe.astro"
+import Briefcase from "@/components/icons/Briefcase.astro"
+import CodeDots from "@/components/icons/CodeDots.astro"
+import Code from "@/components/icons/Code.astro"
+import Experience from "@/components/Experience.astro"
+import UserHeart from "@/components/icons/UserHeart.astro"
+import Projects from "@/components/Projects.astro"
+import Skills from "@/components/Skills.astro"
+import SectionContainer from "@/components/SectionContainer.astro"
+import Hero from "@/components/Hero.astro"
+import TitleSection from "@/components/TitleSection.astro"
+import type { Lang } from "@/i18n/types"
+import { getT } from "@/i18n/ui"
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const t = getT(lang)
+---
+
+<main class="px-4">
+  <SectionContainer class="py-16 md:py-36">
+    <Hero lang={lang} />
+  </SectionContainer>
+
+  <div class="space-y-24">
+    <SectionContainer id="experiencia">
+      <TitleSection>
+        <Briefcase class="size-8" />
+        {t("section.experience")}
+      </TitleSection>
+      <Experience lang={lang} />
+    </SectionContainer>
+
+    <SectionContainer id="proyectos">
+      <TitleSection>
+        <CodeDots class="size-7" />
+        {t("section.projects")}
+      </TitleSection>
+      <Projects lang={lang} />
+    </SectionContainer>
+
+    <SectionContainer id="tecnologias">
+      <TitleSection>
+        <Code class="size-7" />
+        {t("section.skills")}
+      </TitleSection>
+      <Skills lang={lang} />
+    </SectionContainer>
+
+    <SectionContainer id="sobre-mi">
+      <TitleSection>
+        <UserHeart class="size-8" />
+        {t("section.about")}
+      </TitleSection>
+      <AboutMe lang={lang} />
+    </SectionContainer>
+  </div>
+</main>

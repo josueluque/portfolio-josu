@@ -1,0 +1,67 @@
+---
+import Badge from "@/components/Badge.astro"
+import GitHubIcon from "@/components/icons/GitHub.astro"
+import LinkedInIcon from "@/components/icons/LinkedIn.astro"
+import MailIcon from "@/components/icons/Mail.astro"
+import SparklesIcon from "@/components/icons/Sparkles.astro"
+import ProfileCheckIcon from "@/components/icons/ProfileCheck.astro"
+import SocialPill from "@/components/SocialPill.astro"
+import type { Lang } from "@/i18n/types"
+import { getT } from "@/i18n/ui"
+import { profile } from "@/data/profile"
+
+interface Props {
+  lang: Lang
+}
+
+const { lang } = Astro.props
+const t = getT(lang)
+---
+
+<div class="max-w-2xl">
+  <div class="anim-fade-in flex mb-6">
+    <a
+      href={profile.linkedin}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex items-center transition md:justify-center md:hover:scale-105"
+    >
+      <Badge><SparklesIcon class="size-3" /> {t("hero.available")}</Badge>
+    </a>
+  </div>
+
+  <h1
+    class="anim-fade-in anim-delay-1 text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
+  >
+    {lang === "es" ? "Hola, soy " : "Hi, I'm "}
+    <span class="gradient-name">{profile.name}</span>
+  </h1>
+
+  <p
+    class="anim-fade-in anim-delay-2 mt-6 text-xl text-gray-800 dark:text-gray-300 text-pretty"
+  >
+    {profile.heroTagline[lang]}
+  </p>
+
+  <nav
+    class="anim-fade-in anim-delay-3 flex flex-wrap gap-4 mt-8 items-center"
+    aria-label="Redes sociales y contacto"
+  >
+    <SocialPill href={profile.cv}>
+      <ProfileCheckIcon class="size-4" />
+      {t("hero.cta_cv")}
+    </SocialPill>
+    <SocialPill href={`mailto:${profile.email}`}>
+      <MailIcon class="size-4" />
+      {t("social.contact")}
+    </SocialPill>
+    <SocialPill href={profile.linkedin}>
+      <LinkedInIcon class="size-4" />
+      LinkedIn
+    </SocialPill>
+    <SocialPill href={profile.github}>
+      <GitHubIcon class="size-4" />
+      GitHub
+    </SocialPill>
+  </nav>
+</div>
