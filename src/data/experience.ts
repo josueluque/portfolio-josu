@@ -36,8 +36,8 @@ export const experience: ExperienceEntry[] = [
       en: "December 2024 — June 2025 · On-site · Part-time",
     },
     description: {
-      es: "Desarrollo y mantenimiento de sistemas internos orientados a la gestión de operaciones y procesos administrativos. Desarrollé funcionalidades para el sistema de liquidaciones (gestión de juegos por cliente) y la pantalla de gestión de sorteos del sistema LotLine con paginación, utilizando Java y Spring Boot, e integrando y desplegando funcionalidades con Docker.",
-      en: "Development and maintenance of internal systems focused on managing operations and administrative processes. I developed features for the settlements system (per-client game management) and the raffles management screen of the LotLine system with pagination, using Java and Spring Boot, and integrating and deploying features with Docker.",
+      es: "Desarrollo y mantenimiento de sistemas internos orientados a operaciones y procesos administrativos. Implementé funcionalidades de gestión de juegos por cliente, con filtros y controles de habilitación, y desarrollé una pantalla de gestión de sorteos que permite crear sorteos y visualizar su estado, incorporando paginación para mejorar el rendimiento y manejo de grandes volúmenes de datos. Trabajo con Java y Spring Boot, integrando y desplegando funcionalidades mediante Docker.",
+      en: "Development and maintenance of internal systems focused on operations and administrative processes. I implemented per-client game management features, with filters and enablement controls, and built a raffles management screen that supports creating raffles and viewing their status, incorporating pagination to improve performance and the handling of large volumes of data. I work with Java and Spring Boot, integrating and deploying features through Docker.",
     },
   },
   {
