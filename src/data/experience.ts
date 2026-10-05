@@ -21,8 +21,8 @@ export const experience: ExperienceEntry[] = [
       en: "April 2026 — Present · Remote",
     },
     description: {
-      es: "Desarrollo full stack de productos a medida: un sistema de gestión escolar (alumnos, familias, docentes, comunicaciones y facturación), con análisis y corrección de vulnerabilidades en módulos de pagos, y una plataforma interna de reconocimiento entre colaboradores (badges, likes y feedback). Trabajo con React, Node.js, Docker y herramientas de IA, colaborando mediante Git, Pull Requests y code reviews.",
-      en: "Full stack development of custom products: a school management system (students, families, teachers, communications and invoicing), including analysis and remediation of vulnerabilities in payment modules, and an internal recognition platform for colleagues (badges, likes and feedback). Working with React, Node.js, Docker and AI tools, collaborating through Git, Pull Requests and code reviews.",
+      es: "Desarrollo de soluciones web para gestión escolar y herramientas internas. Trabajé junto a un equipo en la evolución de un sistema de gestión escolar para alumnos, familias, docentes, comunicaciones y facturación, con una dinámica autogestionada para organizar el trabajo y tomar decisiones técnicas junto a los referentes del proyecto. Realicé análisis de seguridad, identificación y corrección de vulnerabilidades en distintos módulos del sistema, incluyendo funcionalidades relacionadas con pagos. También colaboré en el desarrollo de una plataforma interna de reconocimiento entre colaboradores.",
+      en: "Development of web solutions for school management and internal tools. I worked alongside a team on the evolution of a school management system for students, families, teachers, communications and invoicing, with a self-managed dynamic to organize the work and make technical decisions together with the project stakeholders. I carried out security analysis, identifying and remediating vulnerabilities across different modules of the system, including payment-related features. I also collaborated on the development of an internal recognition platform for colleagues.",
     },
   },
   {
