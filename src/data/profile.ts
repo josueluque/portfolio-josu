@@ -47,7 +47,7 @@ export const profile: Profile = {
     en: [
       "I'm an analytical, organized and curious person who enjoys learning and taking on new challenges. I like understanding problems, looking for solutions and paying attention to detail.",
       "I value teamwork, exchanging ideas and learning from the people around me. I'm motivated by creating solutions that add value and have a concrete purpose.",
-      "I aim to keep growing, contribute from my experience and take on new professional challenges.",
+      "Outside of work, I enjoy music, going out for bike rides and photography. These activities let me explore new interests, be creative and find balance in my day-to-day life.",
     ],
   },
 }
