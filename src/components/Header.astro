@@ -1,8 +1,14 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro"
 import LangToggle from "./LangToggle.astro"
+import MenuIcon from "./icons/Menu.astro"
+import XIcon from "./icons/X.astro"
+import Logo from "./icons/Logo.astro"
+import GitHubIcon from "./icons/GitHub.astro"
+import LinkedInIcon from "./icons/LinkedIn.astro"
 import type { Lang } from "@/i18n/types"
 import { getT, homeFor } from "@/i18n/ui"
+import { profile } from "@/data/profile"
 
 interface Props {
   lang: Lang
@@ -11,53 +17,114 @@ interface Props {
 const { lang } = Astro.props
 const t = getT(lang)
 const base = homeFor(lang)
+const menuLabel = lang === "es" ? "Abrir menú" : "Open menu"
 
 const navItems = [
   { title: t("nav.experience"), label: "experiencia", url: `${base}#experiencia` },
   { title: t("nav.projects"), label: "proyectos", url: `${base}#proyectos` },
-  { title: t("nav.skills"), label: "tecnologias", url: `${base}#tecnologias` },
   { title: t("nav.about"), label: "sobre-mi", url: `${base}#sobre-mi` },
+  { title: t("nav.skills"), label: "tecnologias", url: `${base}#tecnologias` },
 ]
 ---
 
-<header
-  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto mt-4"
->
-  <nav
-    class="header-nav flex gap-x-1 px-4 py-1.5 text-sm font-medium rounded-full text-gray-600 dark:text-gray-300 justify-center items-center border border-transparent"
+<header class="fixed top-0 left-0 z-20 w-full px-4 mt-4">
+  <div
+    class="header-bar relative mx-auto flex max-w-4xl items-center justify-between gap-x-2 rounded-full border border-transparent px-4 py-1.5 text-sm font-medium text-gray-600 dark:text-gray-300"
   >
-    {
-      navItems.map((link) => (
+    <a
+      href={base}
+      class="shrink-0 gradient-name transition hover:scale-110"
+      aria-label={profile.name}
+    >
+      <Logo class="size-7" />
+    </a>
+
+    <nav class="hidden md:flex items-center gap-x-1">
+      {
+        navItems.map((link) => (
+          <a
+            class="nav-link relative text-sm block px-3 py-1.5 rounded-full transition-colors duration-200 hover:text-accent-500 dark:hover:text-accent-400"
+            aria-label={link.label}
+            href={link.url}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-x-1">
+      <nav class="hidden md:flex items-center gap-x-0.5" aria-label="Redes sociales">
         <a
-          class="nav-link relative text-xs sm:text-sm block px-1.5 sm:px-3 py-2 sm:py-1.5 rounded-full transition-colors duration-200 hover:text-yellow-500 dark:hover:text-yellow-400"
-          aria-label={link.label}
-          href={link.url}
+          href={profile.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          class="p-1.5 rounded-full transition hover:scale-110 hover:text-accent-500 dark:hover:text-accent-400"
         >
-          {link.title}
+          <GitHubIcon class="size-5" />
         </a>
-      ))
-    }
-    <div class="ml-2 pl-2 border-l border-gray-300/30 dark:border-white/10 flex items-center">
-      <LangToggle lang={lang} />
-      <ThemeToggle />
+        <a
+          href={profile.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          class="p-1.5 rounded-full transition hover:scale-110 hover:text-accent-500 dark:hover:text-accent-400"
+        >
+          <LinkedInIcon class="size-5" />
+        </a>
+      </nav>
+      <div class="border-l border-gray-300/30 dark:border-white/10 pl-2 flex items-center gap-x-2">
+        <LangToggle lang={lang} />
+        <ThemeToggle />
+      </div>
+      <button
+        id="menu-toggle-btn"
+        type="button"
+        class="md:hidden appearance-none border-none flex items-center justify-center p-1 ml-1 rounded-full transition hover:text-accent-500 dark:hover:text-accent-400"
+        aria-label={menuLabel}
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <MenuIcon id="menu-icon-open" class="size-6" />
+        <XIcon id="menu-icon-close" class="hidden size-6" />
+      </button>
     </div>
-  </nav>
+
+    <nav
+      id="mobile-menu"
+      class="mobile-menu absolute hidden top-14 right-0 left-0 md:hidden flex-col gap-y-1 p-2 rounded-2xl border border-gray-200/20 dark:border-white/5 ring-1 ring-white/10 dark:ring-white/5 bg-white/90 dark:bg-gray-900/90 shadow-lg backdrop-blur-md"
+      aria-label={menuLabel}
+    >
+      {
+        navItems.map((link) => (
+          <a
+            class="nav-link block px-4 py-2.5 rounded-xl text-base transition-colors duration-200 hover:text-accent-500 dark:hover:text-accent-400 hover:bg-accent-400/10"
+            aria-label={link.label}
+            href={link.url}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
 </header>
 
 <script>
   document.addEventListener("astro:page-load", () => {
     const sections = document.querySelectorAll("section")
-    const navItems = document.querySelectorAll("header nav a")
+    const navItems = document.querySelectorAll(".nav-link")
 
     const callback = (entries: any[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navItems.forEach((item) => {
             if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-yellow-500", "dark:text-yellow-400", "bg-yellow-400/10")
+              item.classList.add("text-accent-500", "dark:text-accent-400", "bg-accent-400/10")
               item.classList.remove("text-gray-600", "dark:text-gray-300")
             } else {
-              item.classList.remove("text-yellow-500", "dark:text-yellow-400", "bg-yellow-400/10")
+              item.classList.remove("text-accent-500", "dark:text-accent-400", "bg-accent-400/10")
               item.classList.add("text-gray-600", "dark:text-gray-300")
             }
           })
@@ -67,8 +134,8 @@ const navItems = [
 
     const observer = new IntersectionObserver(callback, {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
+      rootMargin: "-45% 0px -45% 0px",
+      threshold: 0,
     })
 
     sections.forEach((section) => {
@@ -85,21 +152,111 @@ const navItems = [
       }
     }
   })
+
+  let menuAbortController: AbortController | null = null
+
+  const setMenuOpen = (isOpen: boolean) => {
+    const menu = document.getElementById("mobile-menu")
+    const btn = document.getElementById("menu-toggle-btn")
+    const openIcon = document.getElementById("menu-icon-open")
+    const closeIcon = document.getElementById("menu-icon-close")
+    if (!menu || !btn) return
+    menu.classList.toggle("open", isOpen)
+    btn.setAttribute("aria-expanded", String(isOpen))
+    openIcon?.classList.toggle("hidden", isOpen)
+    closeIcon?.classList.toggle("hidden", !isOpen)
+  }
+
+  const attachMenuListeners = () => {
+    menuAbortController?.abort()
+    menuAbortController = new AbortController()
+    const { signal } = menuAbortController
+
+    const menu = document.getElementById("mobile-menu")
+    const btn = document.getElementById("menu-toggle-btn")
+
+    document.addEventListener("click", () => setMenuOpen(false), { signal })
+
+    btn?.addEventListener(
+      "click",
+      (e) => {
+        e.stopPropagation()
+        const isClosed = !menu?.classList.contains("open")
+        setMenuOpen(isClosed)
+      },
+      { signal }
+    )
+
+    menu?.addEventListener("click", (e) => e.stopPropagation(), { signal })
+
+    menu?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setMenuOpen(false), { signal })
+    })
+  }
+
+  document.addEventListener("astro:page-load", attachMenuListeners)
+  document.addEventListener("astro:after-swap", () => setMenuOpen(false))
 </script>
 
 <style>
-  .header-nav {
+  .header-bar {
     animation: nav-appear 1s linear both;
     animation-timeline: scroll();
     animation-range: 0 100px;
   }
 
-  .header-nav {
+  .header-bar {
     @apply dark:bg-gray-900/80 bg-white/60;
   }
 
-  .nav-link.text-yellow-500 {
+  .nav-link.text-accent-500 {
     @apply font-semibold;
+  }
+
+  @media (min-width: 768px) {
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0.125rem;
+      height: 2px;
+      width: 0;
+      transform: translateX(-50%);
+      border-radius: 9999px;
+      background-color: #3c9d9a;
+      transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    :global(.dark) .nav-link::after {
+      background-color: #4fb8b4;
+    }
+    .nav-link:hover::after,
+    .nav-link.text-accent-500::after {
+      width: calc(100% - 1.5rem);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link::after {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    #mobile-menu.open {
+      display: flex;
+      animation: scale-up-top 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    }
+  }
+
+  @keyframes scale-up-top {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 
   @keyframes nav-appear {

@@ -1,10 +1,7 @@
 ---
-import Badge from "@/components/Badge.astro"
 import GitHubIcon from "@/components/icons/GitHub.astro"
 import LinkedInIcon from "@/components/icons/LinkedIn.astro"
 import MailIcon from "@/components/icons/Mail.astro"
-import SparklesIcon from "@/components/icons/Sparkles.astro"
-import ProfileCheckIcon from "@/components/icons/ProfileCheck.astro"
 import SocialPill from "@/components/SocialPill.astro"
 import type { Lang } from "@/i18n/types"
 import { getT } from "@/i18n/ui"
@@ -19,17 +16,6 @@ const t = getT(lang)
 ---
 
 <div class="max-w-2xl">
-  <div class="anim-fade-in flex mb-6">
-    <a
-      href={profile.linkedin}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center transition md:justify-center md:hover:scale-105"
-    >
-      <Badge><SparklesIcon class="size-3" /> {t("hero.available")}</Badge>
-    </a>
-  </div>
-
   <h1
     class="anim-fade-in anim-delay-1 text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
   >
@@ -38,19 +24,25 @@ const t = getT(lang)
   </h1>
 
   <p
-    class="anim-fade-in anim-delay-2 mt-6 text-xl text-gray-800 dark:text-gray-300 text-pretty"
+    class="anim-fade-in anim-delay-2 mt-3 text-2xl font-semibold text-accent-700 dark:text-accent-300 min-h-[2.25rem]"
+    aria-label={profile.heroRoles[lang].join(", ")}
+  >
+    <span
+      id="hero-typewriter"
+      data-roles={JSON.stringify(profile.heroRoles[lang])}
+      aria-hidden="true"></span><span class="tw-cursor" aria-hidden="true">|</span>
+  </p>
+
+  <p
+    class="anim-fade-in anim-delay-3 mt-6 text-xl text-gray-800 dark:text-gray-300 text-pretty"
   >
     {profile.heroTagline[lang]}
   </p>
 
   <nav
-    class="anim-fade-in anim-delay-3 flex flex-wrap gap-4 mt-8 items-center"
+    class="anim-fade-in anim-delay-4 flex flex-wrap gap-4 mt-8 items-center"
     aria-label="Redes sociales y contacto"
   >
-    <SocialPill href={profile.cv}>
-      <ProfileCheckIcon class="size-4" />
-      {t("hero.cta_cv")}
-    </SocialPill>
     <SocialPill href={`mailto:${profile.email}`}>
       <MailIcon class="size-4" />
       {t("social.contact")}
@@ -65,3 +57,74 @@ const t = getT(lang)
     </SocialPill>
   </nav>
 </div>
+
+<style>
+  .tw-cursor {
+    animation: tw-blink 1s step-end infinite;
+    color: inherit;
+    font-weight: 400;
+  }
+  @keyframes tw-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tw-cursor {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  function initTypewriter() {
+    const el = document.getElementById("hero-typewriter")
+    if (!el) return
+    const roles = JSON.parse(el.dataset.roles || "[]")
+    if (!roles.length) return
+
+    // Respetar reduce-motion: mostrar la primera frase fija, sin animar.
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (reduce) {
+      el.textContent = roles[0]
+      return
+    }
+
+    let roleIdx = 0,
+      charIdx = 0,
+      deleting = false
+    const TYPE = 90,
+      ERASE = 45,
+      HOLD = 1400,
+      GAP = 350
+
+    function tick() {
+      const word = roles[roleIdx]
+      el!.textContent = word.slice(0, charIdx)
+      if (!deleting) {
+        if (charIdx < word.length) {
+          charIdx++
+          setTimeout(tick, TYPE)
+        } else {
+          deleting = true
+          setTimeout(tick, HOLD)
+        }
+      } else {
+        if (charIdx > 0) {
+          charIdx--
+          setTimeout(tick, ERASE)
+        } else {
+          deleting = false
+          roleIdx = (roleIdx + 1) % roles.length
+          setTimeout(tick, GAP)
+        }
+      }
+    }
+    tick()
+  }
+  document.addEventListener("astro:page-load", initTypewriter)
+</script>

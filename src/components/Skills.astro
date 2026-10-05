@@ -1,6 +1,26 @@
 ---
 import type { Lang } from "@/i18n/types"
-import { skillGroups, softSkills } from "@/data/skills"
+import { skillGroups } from "@/data/skills"
+
+import React from "@/components/icons/React.astro"
+import NextJS from "@/components/icons/NextJS.astro"
+import TypeScript from "@/components/icons/TypeScript.astro"
+import JavaScript from "@/components/icons/JavaScript.astro"
+import Tailwind from "@/components/icons/Tailwind.astro"
+import Java from "@/components/icons/Java.astro"
+import SpringBoot from "@/components/icons/SpringBoot.astro"
+import NodeJS from "@/components/icons/NodeJS.astro"
+import Express from "@/components/icons/Express.astro"
+import PostgreSQL from "@/components/icons/PostgreSQL.astro"
+import MySQL from "@/components/icons/MySQL.astro"
+import Git from "@/components/icons/Git.astro"
+import GitHub from "@/components/icons/GitHub.astro"
+import Docker from "@/components/icons/Docker.astro"
+import Postman from "@/components/icons/Postman.astro"
+import Claude from "@/components/icons/Claude.astro"
+import Terminal from "@/components/icons/Terminal.astro"
+import CodeDots from "@/components/icons/CodeDots.astro"
+import Code from "@/components/icons/Code.astro"
 
 interface Props {
   lang: Lang
@@ -8,38 +28,51 @@ interface Props {
 
 const { lang } = Astro.props
 
-const chip =
-  "flex gap-x-2 rounded-full text-sm py-1.5 px-3 bg-gray-200/70 text-gray-800 dark:bg-gray-800 dark:text-gray-200 border border-gray-300/60 dark:border-white/10"
+const icons: Record<string, any> = {
+  react: React,
+  nextjs: NextJS,
+  typescript: TypeScript,
+  javascript: JavaScript,
+  tailwind: Tailwind,
+  java: Java,
+  springboot: SpringBoot,
+  nodejs: NodeJS,
+  express: Express,
+  postgresql: PostgreSQL,
+  mysql: MySQL,
+  git: Git,
+  github: GitHub,
+  docker: Docker,
+  postman: Postman,
+  claude: Claude,
+  terminal: Terminal,
+  opencode: CodeDots,
+  generic: Code,
+}
+
+const card =
+  "rounded-3xl border border-gray-300/60 dark:border-white/10 bg-white/40 dark:bg-gray-900/40 p-6 md:p-8"
 ---
 
-<div class="flex flex-col gap-y-8">
+<div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
   {
     skillGroups.map((group) => (
-      <div>
-        <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">
+      <div class={card}>
+        <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
           {group.title[lang]}
         </h3>
-        <ul class="flex flex-row flex-wrap gap-2">
-          {group.items.map((item) => (
-            <li>
-              <span class={chip}>{item}</span>
-            </li>
-          ))}
+        <ul class="grid grid-cols-3 gap-x-4 gap-y-6">
+          {group.items.map((item) => {
+            const Icon = icons[item.icon] ?? icons.generic
+            return (
+              <li class="flex flex-col items-center gap-2 text-center">
+                <Icon class="size-12 text-gray-700 dark:text-gray-200" />
+                <span class="text-sm text-gray-600 dark:text-gray-300">{item.name}</span>
+              </li>
+            )
+          })}
         </ul>
       </div>
     ))
   }
-
-  <div>
-    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">
-      {softSkills.title[lang]}
-    </h3>
-    <ul class="flex flex-row flex-wrap gap-2">
-      {softSkills.items.map((item) => (
-        <li>
-          <span class={chip}>{item[lang]}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
 </div>

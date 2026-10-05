@@ -1,14 +1,13 @@
 ---
 import type { Lang } from "@/i18n/types"
-import { getT } from "@/i18n/ui"
 import { profile } from "@/data/profile"
+import HeartFilled from "@/components/icons/HeartFilled.astro"
 
 interface Props {
   lang: Lang
 }
 
 const { lang } = Astro.props
-const t = getT(lang)
 const currentYear = new Date().getFullYear()
 ---
 
@@ -16,10 +15,23 @@ const currentYear = new Date().getFullYear()
   class="opacity-80 m-4 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl mb-10 flex justify-center"
 >
   <div
-    class="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between py-4 flex flex-col md:flex-row items-center gap-4"
+    class="rounded-lg w-full max-w-screen-xl mx-auto py-4 flex flex-col items-center gap-1 text-center"
   >
-    <span class="text-sm text-center text-pretty md:text-left text-zinc-800/90 dark:text-zinc-200/90">
-      &copy; {currentYear} {profile.name}. {t("footer.rights")}
+    <span class="flex flex-wrap items-center justify-center gap-1 text-sm text-pretty text-zinc-800/90 dark:text-zinc-200/90">
+      <span>&copy; {currentYear} {profile.name}.</span>
+      {lang === "es" ? "Hecho con" : "Made with"}
+      <HeartFilled class="size-3.5 text-red-500" />
+    </span>
+    <span class="text-xs text-pretty text-zinc-600/80 dark:text-zinc-400/80">
+      {lang === "es" ? "Inspirado en el portfolio de " : "Inspired by the portfolio of "}
+      <a
+        href="https://porfolio.dev/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-medium underline underline-offset-2 hover:text-accent-500 dark:hover:text-accent-400 transition-colors"
+      >
+        midudev
+      </a>
     </span>
   </div>
 </footer>

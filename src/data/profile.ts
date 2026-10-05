@@ -1,41 +1,53 @@
-import type { Localized } from "@/i18n/types"
+import type { Localized, LocalizedBlocks } from "@/i18n/types"
 
 interface Profile {
   name: string
   email: string
-  phoneDisplay: string
-  phoneHref: string
   github: string
   linkedin: string
-  cv: string
+  photo?: string
   role: Localized
+  heroRoles: LocalizedBlocks
   heroTagline: Localized
-  aboutText: Localized
+  aboutText: LocalizedBlocks
 }
 
 export const profile: Profile = {
-  name: "Josue Luque",
+  name: "Josué",
   email: "jluqueherbas@gmail.com",
-  phoneDisplay: "+54 9 11 3301-6427",
-  phoneHref: "+5491133016427",
   github: "https://github.com/josueluque",
   linkedin: "https://www.linkedin.com/in/josueluque/",
-  cv: "/cv/cv-josueluque-2026.pdf",
+  // Foto de perfil (en /public). Dejar vacío/undefined para ocultar la imagen.
+  photo: "/josue.jpg",
 
   role: {
     es: "Desarrollador Full Stack",
     en: "Full Stack Developer",
   },
 
+  // Frases que rotan con efecto "máquina de escribir" en el Hero.
+  heroRoles: {
+    es: ["Desarrollador", "Ingeniería en Sistemas", "IA aplicada al desarrollo"],
+    en: ["Developer", "Systems Engineering", "AI applied to development"],
+  },
+
   // Línea corta profesional del Hero.
   heroTagline: {
-    es: "Desarrollador Full Stack — creo soluciones de software útiles, eficientes y fáciles de mantener, combinando frontend y backend con foco en calidad, seguridad y trabajo en equipo.",
-    en: "Full Stack Developer — I build software solutions that are useful, efficient and easy to maintain, combining frontend and backend with a focus on quality, security and teamwork.",
+    es: "Desarrollador de software. Diseño y desarrollo soluciones que aportan valor, incorporando tecnologías modernas y herramientas de IA con foco en calidad, seguridad, eficiencia y mantenibilidad.",
+    en: "Software developer. I design and build solutions that add value, incorporating modern technologies and AI tools with a focus on quality, security, efficiency and maintainability.",
   },
 
   // Texto profesional completo de la sección "Sobre mí".
   aboutText: {
-    es: "Desarrollador Full Stack con experiencia en diseño, desarrollo y evolución de soluciones de software. Me caracterizo por ser analítico, organizado y atento a los detalles. Valoro el trabajo colaborativo y el aprendizaje continuo. Me motiva la posibilidad de crear soluciones que aporten valor mediante el uso de la tecnología. Busco seguir desarrollándome profesionalmente aportando soluciones y asumiendo nuevos desafíos.",
-    en: "Full Stack Developer with experience in the design, development and evolution of software solutions. I am analytical, organized and attentive to detail. I value collaborative work and continuous learning. I'm motivated by the possibility of creating value through technology, and I keep growing professionally by delivering solutions and taking on new challenges.",
+    es: [
+      "Soy una persona analítica, organizada y curiosa, que disfruta aprender y asumir nuevos desafíos. Me gusta entender los problemas, buscar soluciones y prestar atención a los detalles.",
+      "Valoro el trabajo en equipo, el intercambio de ideas y aprender de las personas que me rodean. Me motiva crear soluciones que aporten valor y tengan un propósito concreto.",
+      "Fuera del ámbito profesional, disfruto de la música, salir en bicicleta y la fotografía. Son actividades que me permiten explorar nuevos intereses, ser creativo y encontrar un equilibrio en el día a día.",
+    ],
+    en: [
+      "I'm an analytical, organized and curious person who enjoys learning and taking on new challenges. I like understanding problems, looking for solutions and paying attention to detail.",
+      "I value teamwork, exchanging ideas and learning from the people around me. I'm motivated by creating solutions that add value and have a concrete purpose.",
+      "I aim to keep growing, contribute from my experience and take on new professional challenges.",
+    ],
   },
 }

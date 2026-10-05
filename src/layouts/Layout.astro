@@ -81,8 +81,8 @@ const jsonLd = {
   <body class="relative text-black dark:text-white">
     <div
       class="fixed inset-0 z-[-2] bg-gray-50 dark:bg-gray-950
-      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(251,191,36,0.14),rgba(255,255,255,0.9))]
-      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(251,191,36,0.08),rgba(0,0,0,0))]"
+      bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(79,184,180,0.16),rgba(255,255,255,0.9))]
+      dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(79,184,180,0.12),rgba(0,0,0,0))]"
     >
     </div>
     <!-- Grain texture overlay for tactile depth -->
@@ -185,13 +185,12 @@ const jsonLd = {
       .anim-delay-3 { animation-delay: 400ms; }
       .anim-delay-4 { animation-delay: 540ms; }
 
-      /* Gradient text utility for the hero name */
+      /* Solid accent color for the hero name and header logo */
       .gradient-name {
-        background: linear-gradient(135deg, #f59e0b 10%, #f97316 90%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
+        color: #3C9D9A;
+      }
+      :global(.dark) .gradient-name {
+        color: #85D0CC;
       }
 
       /* Scroll-triggered reveal for named sections (below the fold) */

@@ -11,10 +11,10 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    image: "/projects/prendix-home.png",
-    link: "https://prendix-nine.vercel.app/",
-    github: "https://github.com/josueluque/prendix",
-    tags: ["React", "TypeScript", "Supabase", "PWA", "Vercel"],
+    image: "/projects/prendix.webp",
+    link: "https://prendix-demo.vercel.app/",
+    // github: "https://github.com/josueluque/prendix",
+    tags: ["React", "TypeScript", "Supabase", "PWA"],
     title: { es: "Prendix", en: "Prendix" },
     description: {
       es: "Conteo colaborativo de prendas por talle, en tiempo real, para talleres de costura. Web App instalable (PWA) que reemplaza el cuaderno de papel: se comparte con un código de acceso, cada persona registra conteos por talle y los totales se calculan solos, con sincronización en tiempo real entre dispositivos mediante Supabase.",
@@ -22,7 +22,8 @@ export const projects: Project[] = [
     },
   },
   {
-    image: "/projects/nubilist-placeholder.svg",
+    image: "/projects/nubilist.webp",
+    github: "https://github.com/josueluque/nubilist-sgp",
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Docker"],
     title: { es: "Nubilist", en: "Nubilist" },
     description: {

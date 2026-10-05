@@ -12,32 +12,17 @@ export const experience: ExperienceEntry[] = [
   {
     current: true,
     title: {
-      es: "Full Stack Developer · Sistema de Gestión Escolar",
-      en: "Full Stack Developer · School Management System",
+      es: "Full Stack Developer",
+      en: "Full Stack Developer",
     },
     company: "ForIT Software Factory",
     date: {
-      es: "Junio 2026 — Actualidad · Remoto",
-      en: "June 2026 — Present · Remote",
+      es: "Abril 2026 — Actualidad · Remoto",
+      en: "April 2026 — Present · Remote",
     },
     description: {
-      es: "Desarrollo y mantenimiento de un sistema de gestión para instituciones educativas con funcionalidades orientadas a la gestión de alumnos, familias, docentes, actividades, comunicaciones y facturación. Análisis y corrección de vulnerabilidades de seguridad en módulos de pagos y facturación, auditorías técnicas y planes de acción junto al equipo, con Docker para el entorno de desarrollo y herramientas de IA para acelerar el análisis técnico.",
-      en: "Development and maintenance of a management system for educational institutions, with features for managing students, families, teachers, activities, communications and invoicing. Analysis and remediation of security vulnerabilities in payments and invoicing modules, technical audits and action plans with the team, using Docker for the development environment and AI tools to speed up technical analysis.",
-    },
-  },
-  {
-    title: {
-      es: "Full Stack Developer · Plataforma Interna de Reconocimiento",
-      en: "Full Stack Developer · Internal Recognition Platform",
-    },
-    company: "ForIT Software Factory",
-    date: {
-      es: "Abril 2026 — Junio 2026 · Remoto",
-      en: "April 2026 — June 2026 · Remote",
-    },
-    description: {
-      es: "Desarrollo de una plataforma interna orientada al reconocimiento y feedback entre colaboradores: funcionalidades de interacción mediante badges, likes, comentarios y feedback, desarrolladas con React y Node.js. Trabajo colaborativo mediante Git, Pull Requests y code reviews, participando en el análisis, desarrollo y mejora continua de funcionalidades.",
-      en: "Development of an internal platform focused on recognition and feedback among colleagues: interaction features through badges, likes, comments and feedback, built with React and Node.js. Collaborative work through Git, Pull Requests and code reviews, taking part in the analysis, development and continuous improvement of features.",
+      es: "Desarrollo full stack de productos a medida: un sistema de gestión escolar (alumnos, familias, docentes, comunicaciones y facturación), con análisis y corrección de vulnerabilidades en módulos de pagos, y una plataforma interna de reconocimiento entre colaboradores (badges, likes y feedback). Trabajo con React, Node.js, Docker y herramientas de IA, colaborando mediante Git, Pull Requests y code reviews.",
+      en: "Full stack development of custom products: a school management system (students, families, teachers, communications and invoicing), including analysis and remediation of vulnerabilities in payment modules, and an internal recognition platform for colleagues (badges, likes and feedback). Working with React, Node.js, Docker and AI tools, collaborating through Git, Pull Requests and code reviews.",
     },
   },
   {
