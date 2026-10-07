@@ -97,12 +97,21 @@ const jsonLd = {
     <Footer lang={lang} />
     <style is:global>
       :root {
-        color-scheme: light dark;
+        color-scheme: light;
+      }
+
+      :root.dark {
+        color-scheme: dark;
       }
 
       html {
         font-family: "Onest Variable", system-ui, sans-serif;
         scroll-behavior: smooth;
+        background-color: #f9fafb; /* gray-50 */
+      }
+
+      html.dark {
+        background-color: #030712; /* gray-950 */
       }
 
       body {
