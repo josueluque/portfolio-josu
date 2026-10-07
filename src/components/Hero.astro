@@ -43,9 +43,18 @@ const t = getT(lang)
     class="anim-fade-in anim-delay-4 flex flex-wrap gap-4 mt-8 items-center"
     aria-label="Redes sociales y contacto"
   >
-    <SocialPill href={`mailto:${profile.email}`}>
+    <SocialPill
+      id="contact-pill"
+      href={`mailto:${profile.email}`}
+      target="_self"
+      rel=""
+      data-email={profile.email}
+      data-label={t("social.contact")}
+      data-copied={t("social.copied")}
+      aria-label={t("social.contact_aria")}
+    >
       <MailIcon class="size-4" />
-      {t("social.contact")}
+      <span id="contact-label">{t("social.contact")}</span>
     </SocialPill>
     <SocialPill href={profile.linkedin}>
       <LinkedInIcon class="size-4" />
@@ -127,4 +136,56 @@ const t = getT(lang)
     tick()
   }
   document.addEventListener("astro:page-load", initTypewriter)
+
+  function copyEmail(email: string): Promise<void> {
+    if (navigator.clipboard?.writeText) {
+      return navigator.clipboard.writeText(email)
+    }
+    // Fallback para navegadores sin Clipboard API o contexto no seguro.
+    return new Promise((resolve, reject) => {
+      const area = document.createElement("textarea")
+      area.value = email
+      area.setAttribute("readonly", "")
+      area.style.position = "fixed"
+      area.style.opacity = "0"
+      document.body.appendChild(area)
+      area.select()
+      try {
+        document.execCommand("copy")
+        resolve()
+      } catch (err) {
+        reject(err)
+      } finally {
+        document.body.removeChild(area)
+      }
+    })
+  }
+
+  function initContactPill() {
+    const pill = document.getElementById("contact-pill")
+    const label = document.getElementById("contact-label")
+    if (!pill || !label) return
+
+    const email = pill.dataset.email || ""
+    const defaultText = pill.dataset.label || label.textContent || ""
+    const copiedText = pill.dataset.copied || "Copied!"
+    let resetTimer: number | undefined
+
+    // No preventDefault: el mailto sigue funcionando (misma pestaña, sin blank).
+    pill.addEventListener("click", () => {
+      if (!email) return
+      copyEmail(email)
+        .then(() => {
+          label.textContent = copiedText
+          window.clearTimeout(resetTimer)
+          resetTimer = window.setTimeout(() => {
+            label.textContent = defaultText
+          }, 1600)
+        })
+        .catch(() => {
+          /* Si falla la copia, el mailto ya se disparó como respaldo. */
+        })
+    })
+  }
+  document.addEventListener("astro:page-load", initContactPill)
 </script>

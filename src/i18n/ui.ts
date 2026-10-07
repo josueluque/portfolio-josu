@@ -20,6 +20,8 @@ const UI = {
 
     // Hero / social
     "social.contact": "Contáctame",
+    "social.copied": "¡Copiado!",
+    "social.contact_aria": "Copiar email de contacto",
 
     // Proyectos
     "projects.code": "Código",
@@ -43,6 +45,8 @@ const UI = {
 
     // Hero / social
     "social.contact": "Contact me",
+    "social.copied": "Copied!",
+    "social.contact_aria": "Copy contact email",
 
     // Projects
     "projects.code": "Code",
