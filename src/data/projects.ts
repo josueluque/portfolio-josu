@@ -17,8 +17,8 @@ export const projects: Project[] = [
     tags: ["React", "TypeScript", "Supabase", "PWA"],
     title: { es: "Prendix", en: "Prendix" },
     description: {
-      es: "Conteo colaborativo de prendas por talle, en tiempo real, para talleres de costura. Web App instalable (PWA) que reemplaza el cuaderno de papel: se comparte con un código de acceso, cada persona registra conteos por talle y los totales se calculan solos, con sincronización en tiempo real entre dispositivos mediante Supabase.",
-      en: "Collaborative, real-time garment counting by size for sewing workshops. An installable Web App (PWA) that replaces the paper notebook: shared with an access code, each person records counts by size and totals are computed automatically, with real-time sync across devices via Supabase.",
+      es: "App web instalable (PWA) para digitalizar el conteo de prendas por talle en talleres de costura, reemplazando el registro manual en papel. Permite crear y compartir conteos mediante un código de acceso, calcular totales automáticamente y mantener la información sincronizada en tiempo real entre dispositivos mediante Supabase.",
+      en: "An installable web app (PWA) to digitize garment counting by size in sewing workshops, replacing manual paper records. It lets you create and share counts via an access code, calculate totals automatically, and keep information synced in real time across devices with Supabase.",
     },
   },
   {
@@ -27,8 +27,8 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Prisma", "Docker", "PostgreSQL"],
     title: { es: "Nubilist", en: "Nubilist" },
     description: {
-      es: "Tablero Kanban para gestionar pedidos con códigos de seguimiento únicos, búsqueda en tiempo real y drag & drop entre 4 estados. Proyecto personal full stack en monorepo: modelo de datos, capa de dominio aislada y testeada, API, interfaz y Docker, con autenticación (NextAuth) y panel de Storybook.",
-      en: "Kanban board to manage orders with unique tracking codes, real-time search and drag & drop across 4 states. A full-stack personal project in a monorepo: data model, isolated and tested domain layer, API, UI and Docker, with authentication (NextAuth) and a Storybook panel.",
+      es: "Sistema de gestión de pedidos diseñado para centralizar su seguimiento y facilitar la organización del trabajo mediante un tablero Kanban. Cada pedido cuenta con un código de seguimiento único, búsqueda en tiempo real y estados que pueden actualizarse mediante drag & drop. Proyecto Full Stack en monorepo, con autenticación, modelo de datos, capa de dominio aislada y testeada, API, Docker y Storybook.",
+      en: "An order management system designed to centralize order tracking and streamline workflow through a Kanban board. Each order has a unique tracking code, real-time search, and statuses that can be updated via drag & drop. A full-stack project in a monorepo, with authentication, data model, an isolated and tested domain layer, API, Docker, and Storybook.",
     },
   },
 ]
