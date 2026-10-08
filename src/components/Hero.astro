@@ -15,7 +15,7 @@ const { lang } = Astro.props
 const t = getT(lang)
 ---
 
-<div class="max-w-2xl">
+<div class="max-w-2xl my-auto">
   <h1
     class="anim-fade-in anim-delay-1 text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
   >
@@ -67,6 +67,14 @@ const t = getT(lang)
   </nav>
 </div>
 
+<a
+  href="#experiencia"
+  class="hero-scroll-cue anim-fade-in anim-delay-4 mx-auto flex flex-col items-center gap-1 pt-8 text-[15px] font-medium text-gray-500 transition-colors hover:text-accent-500 focus-visible:text-accent-500 dark:text-gray-400 dark:hover:text-accent-300 dark:focus-visible:text-accent-300"
+>
+  <span>{t("nav.experience")}</span>
+  <span class="hero-scroll-arrow text-[20px] leading-none" aria-hidden="true">↓</span>
+</a>
+
 <style>
   .tw-cursor {
     animation: tw-blink 1s step-end infinite;
@@ -82,8 +90,23 @@ const t = getT(lang)
       opacity: 0;
     }
   }
+  .hero-scroll-arrow {
+    animation: hero-bob 1.8s ease-in-out infinite;
+  }
+  @keyframes hero-bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(4px);
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     .tw-cursor {
+      animation: none;
+    }
+    .hero-scroll-arrow {
       animation: none;
     }
   }
