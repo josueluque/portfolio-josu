@@ -24,7 +24,7 @@ export const projects: Project[] = [
   {
     image: "/projects/nubilist.webp",
     github: "https://github.com/josueluque/nubilist-sgp",
-    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Docker"],
+    tags: ["Next.js", "TypeScript", "Prisma", "Docker", "PostgreSQL"],
     title: { es: "Nubilist", en: "Nubilist" },
     description: {
       es: "Tablero Kanban para gestionar pedidos con códigos de seguimiento únicos, búsqueda en tiempo real y drag & drop entre 4 estados. Proyecto personal full stack en monorepo: modelo de datos, capa de dominio aislada y testeada, API, interfaz y Docker, con autenticación (NextAuth) y panel de Storybook.",
