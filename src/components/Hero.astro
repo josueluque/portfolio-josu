@@ -1,4 +1,5 @@
 ---
+import DownloadIcon from "@/components/icons/Download.astro"
 import GitHubIcon from "@/components/icons/GitHub.astro"
 import LinkedInIcon from "@/components/icons/LinkedIn.astro"
 import MailIcon from "@/components/icons/Mail.astro"
@@ -13,6 +14,7 @@ interface Props {
 
 const { lang } = Astro.props
 const t = getT(lang)
+const cvUrl = import.meta.env.PUBLIC_CV_URL
 ---
 
 <div class="max-w-2xl my-auto">
@@ -40,7 +42,7 @@ const t = getT(lang)
   </p>
 
   <nav
-    class="anim-fade-in anim-delay-4 flex flex-wrap gap-4 mt-8 items-center"
+    class="anim-fade-in anim-delay-4 mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center sm:gap-4"
     aria-label="Redes sociales y contacto"
   >
     <SocialPill
@@ -56,11 +58,19 @@ const t = getT(lang)
       <MailIcon class="size-4" />
       <span id="contact-label">{t("social.contact")}</span>
     </SocialPill>
-    <SocialPill href={profile.linkedin}>
+    {
+      cvUrl && (
+        <SocialPill href={cvUrl} aria-label={t("social.cv")}>
+          <DownloadIcon class="size-4" />
+          {t("social.cv")}
+        </SocialPill>
+      )
+    }
+    <SocialPill href={profile.linkedin} class="hidden sm:inline-flex">
       <LinkedInIcon class="size-4" />
       LinkedIn
     </SocialPill>
-    <SocialPill href={profile.github}>
+    <SocialPill href={profile.github} class="hidden sm:inline-flex">
       <GitHubIcon class="size-4" />
       GitHub
     </SocialPill>

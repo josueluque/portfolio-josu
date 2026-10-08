@@ -22,6 +22,7 @@ const UI = {
     "social.contact": "Contáctame",
     "social.copied": "¡Copiado!",
     "social.contact_aria": "Copiar email de contacto",
+    "social.cv": "Descargar CV",
 
     // Proyectos
     "projects.code": "Código",
@@ -47,6 +48,7 @@ const UI = {
     "social.contact": "Contact me",
     "social.copied": "Copied!",
     "social.contact_aria": "Copy contact email",
+    "social.cv": "Download CV",
 
     // Projects
     "projects.code": "Code",
