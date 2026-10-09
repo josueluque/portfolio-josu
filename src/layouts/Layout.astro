@@ -3,6 +3,7 @@ import "@fontsource-variable/onest";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { ViewTransitions } from "astro:transitions";
+import Analytics from "@vercel/analytics/astro";
 import type { Lang } from "@/i18n/types";
 import { profile } from "@/data/profile";
 
@@ -95,6 +96,7 @@ const jsonLd = {
     <Header lang={lang} />
     <slot />
     <Footer lang={lang} />
+    <Analytics />
     <style is:global>
       :root {
         color-scheme: light;
