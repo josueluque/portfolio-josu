@@ -27,8 +27,8 @@ export const profile: Profile = {
 
   // Frases que rotan con efecto "máquina de escribir" en el Hero.
   heroRoles: {
-    es: ["Desarrollador", "Ingeniería en Sistemas", "IA aplicada al desarrollo"],
-    en: ["Developer", "Systems Engineering", "AI applied to development"],
+    es: ["Desarrollador", "Técnico en TIC", "Ingeniería en Sistemas", "AI-augmented Engineering"],
+    en: ["Developer", "ICT Technician", "Systems Engineering", "AI-augmented Engineering"],
   },
 
   // Línea corta profesional del Hero.
