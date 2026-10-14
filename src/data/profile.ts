@@ -18,7 +18,7 @@ export const profile: Profile = {
   github: "https://github.com/josueluque",
   linkedin: "https://www.linkedin.com/in/josueluque/",
   // Foto de perfil (en /public). Dejar vacío/undefined para ocultar la imagen.
-  photo: "/josue.jpg",
+  photo: import.meta.env.PUBLIC_PHOTO_URL,
 
   role: {
     es: "Desarrollador Full Stack",
